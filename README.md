@@ -1,2 +1,2 @@
-# tg_bot
+# Learn tg_bot
 
