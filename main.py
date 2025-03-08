@@ -1,27 +1,21 @@
 import asyncio
-from aiogram import Bot, Dispatcher
-from aiogram.types import Message
+from aiogram import Bot, Dispatcher, F
+from app.handlers import router
 
-
-bot = Bot(token="7802940547:AAHWjtPIx9UfG2bvOUejgOYny44TCVriLvo")
-
-dp = Dispatcher()
-
-
-@dp.message()
-async def cmd_start(message: Message):
-    await message.answer("Привет")
-    await message.reply("Как дела?")
 
     
-
 async def main():
+    bot = Bot(token="7802940547:AAHWjtPIx9UfG2bvOUejgOYny44TCVriLvo")
+    dp = Dispatcher()
+    dp.include_router(router)
     await dp.start_polling(bot)
 
 
 
-
 if __name__ == "__main__":
-    asyncio.run(main())
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("Бот выключен")
 
 
